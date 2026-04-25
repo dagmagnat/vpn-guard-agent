@@ -36,7 +36,7 @@
 sudo apt update
 sudo apt install -y git
 
-git clone https://github.com/YOUR_USERNAME/vpn-guard-agent.git
+git clone https://github.com/dagmagnat/vpn-guard-agent.git
 cd vpn-guard-agent
 sudo bash install.sh
 ```
@@ -54,7 +54,7 @@ vpn-guard scan
 ```bash
 sudo apt install -y python3 python3-venv python3-pip conntrack nftables wireguard-tools
 
-git clone https://github.com/YOUR_USERNAME/vpn-guard-agent.git
+git clone https://github.com/dagmagnat/vpn-guard-agent.git
 cd vpn-guard-agent
 python3 -m venv .venv
 source .venv/bin/activate
