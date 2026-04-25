@@ -1,0 +1,41 @@
+# VPN Guard Agent configuration
+# Copy to /etc/vpn-guard/config.yml
+
+paths:
+  xray_access_log: /var/log/xray/access.log
+  openvpn_status_log: /etc/openvpn/openvpn-status.log
+  db_path: /var/lib/vpn-guard/vpn-guard.sqlite3
+
+firewall:
+  backend: nftables   # nftables or iptables
+  nft_table: vpn_guard
+  nft_set: blocked_ips
+
+thresholds:
+  tcp_connections_high: 300
+  udp_connections_high: 500
+  unique_destinations_high: 200
+  upload_mb_per_hour_high: 1000
+  blacklist_hits_high: 1
+
+actions:
+  auto_block: false
+  auto_block_score: 100
+  temporary_ban_hours: 24
+
+# Example abuse networks from hosting provider notices.
+# You can add/remove your own networks here.
+blocklists:
+  - 178.162.203.0/24
+  - 45.159.79.0/24
+  - 85.17.155.0/24
+  - 185.221.222.0/24
+  - 89.150.57.0/24
+  - 46.165.199.0/24
+  - 178.162.202.0/24
+  - 85.17.70.0/24
+  - 64.62.203.0/24
+
+# Optional: local clients that should not be scored.
+whitelist:
+  - 127.0.0.1
